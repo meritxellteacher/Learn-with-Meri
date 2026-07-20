@@ -1,0 +1,117 @@
+[
+  {
+    "title": "Simple Past",
+    "description": "Accions acabades, verbs regulars i irregulars i preguntes amb did.",
+    "language": "English",
+    "category": "grammar",
+    "level": "A2",
+    "status": "available",
+    "file": "media/documents/english-past-simple-a1-a2-optimised.pdf",
+    "icon": "PAST",
+    "published": true
+  },
+  {
+    "title": "Preterito Indefinido",
+    "description": "Acciones acabadas, verbos regulares e irregulares.",
+    "language": "Spanish",
+    "category": "grammar",
+    "level": "A2",
+    "status": "available",
+    "file": "media/documents/espanol-pasado-indefinido-a2-optimizado.pdf",
+    "icon": "PASADO",
+    "keywords": "pasado indefinido",
+    "published": true
+  },
+  {
+    "title": "Daily Routines",
+    "description": "Vocabulari visual i frases pràctiques per explicar el teu dia.",
+    "language": "English",
+    "category": "vocabulary",
+    "level": "A1",
+    "status": "coming",
+    "icon": "DAY",
+    "published": true
+  },
+  {
+    "title": "Can, Have Got & There Is",
+    "description": "Preguntes guiades per practicar estructures essencials parlant.",
+    "language": "English",
+    "category": "speaking",
+    "level": "A1",
+    "status": "coming",
+    "icon": "TALK",
+    "published": true
+  },
+  {
+    "title": "Present Tenses Review",
+    "description": "Present simple i continuous: forma, ús i contrastos clau.",
+    "language": "English",
+    "category": "grammar",
+    "level": "A1",
+    "status": "preparing",
+    "icon": "NOW",
+    "published": true
+  },
+  {
+    "title": "Word Formation",
+    "description": "Famílies de paraules, prefixos i sufixos per ampliar vocabulari.",
+    "language": "English",
+    "category": "vocabulary",
+    "level": "B2",
+    "status": "coming",
+    "icon": "WORD",
+    "published": true
+  },
+  {
+    "title": "Reading & Use of English",
+    "description": "Estratègies visuals i pràctica enfocada a Cambridge.",
+    "language": "English",
+    "category": "grammar",
+    "level": "B2",
+    "status": "coming",
+    "icon": "READ",
+    "published": true
+  },
+  {
+    "title": "Anar a comprar",
+    "description": "Vocabulari i frases útils per comprar al mercat, al supermercat i a les botigues.",
+    "language": "Catalan",
+    "category": "speaking",
+    "level": "B1",
+    "status": "available",
+    "icon": "PARLA",
+    "published": true
+  },
+  {
+    "title": "Perífrasis verbals",
+    "description": "Estructures habituals per expressar obligació, inici, durada i final d'una acció.",
+    "language": "Catalan",
+    "category": "grammar",
+    "level": "B2",
+    "status": "coming",
+    "icon": "VERB",
+    "published": true
+  },
+  {
+    "title": "Pretérito indefinido",
+    "description": "Guía visual de 10 páginas con usos, marcadores temporales, verbos regulares e irregulares, práctica y soluciones.",
+    "language": "Spanish",
+    "category": "grammar",
+    "level": "A2",
+    "status": "available",
+    "icon": "AYER",
+    "keywords": "pasado indefinido pretérito ejercicios respuestas hablar escribir",
+    "url": "materials/espanol/a2/preterito-indefinido/",
+    "published": true
+  },
+  {
+    "title": "En el mercado",
+    "description": "Vocabulario práctico, preguntas y respuestas para comprar con confianza.",
+    "language": "Spanish",
+    "category": "speaking",
+    "level": "B1",
+    "status": "coming",
+    "icon": "MERC",
+    "published": true
+  }
+]

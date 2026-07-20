@@ -12,14 +12,59 @@ const categoryLabels = {
   Español: { grammar: "Gramática", vocabulary: "Vocabulario", speaking: "Conversación", skills: "Destrezas" },
 };
 
+const statusLabels = {
+  available: "Disponible",
+  coming: "Properament",
+  preparing: "En preparació",
+};
+
+function repairText(value) {
+  if (typeof value !== "string" || !/[ÃÂâ]/.test(value)) return value;
+  try {
+    const bytes = Uint8Array.from([...value].map((character) => character.charCodeAt(0)));
+    return new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+  } catch {
+    return value;
+  }
+}
+
+function normalizeLanguage(language) {
+  const repaired = repairText(language || "").trim();
+  if (repaired.startsWith("Espa") || repaired.startsWith("Spa")) return "Español";
+  if (repaired.startsWith("Catal")) return "Català";
+  if (repaired.startsWith("Eng")) return "English";
+  return repaired || "English";
+}
+
+function materialPageUrl(resource) {
+  if (resource.url) return resource.url;
+  if (!resource.file) return "";
+
+  const params = new URLSearchParams({
+    title: resource.title,
+    description: resource.description,
+    language: resource.language,
+    category: resource.categoryLabel,
+    level: resource.level,
+    file: resource.file,
+    icon: resource.icon,
+  });
+  if (resource.cover) params.set("cover", resource.cover);
+  return `material.html?${params.toString()}`;
+}
+
 function prepareResource(resource) {
-  const fallbackIcon = resource.title.replace(/[^A-Za-zÀ-ÿ0-9]/g, "").slice(0, 5).toUpperCase();
+  const repaired = Object.fromEntries(
+    Object.entries(resource).map(([key, value]) => [key, repairText(value)])
+  );
+  repaired.language = normalizeLanguage(repaired.language);
+  const fallbackIcon = repaired.title.replace(/[^A-Za-zÀ-ÿ0-9]/g, "").slice(0, 5).toUpperCase();
   return {
-    ...resource,
-    color: languageColors[resource.language] || "green",
-    categoryLabel: categoryLabels[resource.language]?.[resource.category] || resource.category,
-    icon: resource.icon || fallbackIcon || "MATERIAL",
-    status: resource.status || (resource.file ? "Disponible" : "Properament"),
+    ...repaired,
+    color: languageColors[repaired.language] || "green",
+    categoryLabel: categoryLabels[repaired.language]?.[repaired.category] || repaired.category,
+    icon: repaired.icon || fallbackIcon || "MATERIAL",
+    status: statusLabels[repaired.status] || repaired.status || (repaired.file ? "Disponible" : "Properament"),
   };
 }
 
@@ -29,9 +74,14 @@ const searchInput = document.querySelector("#resource-search");
 const filterButtons = [...document.querySelectorAll(".filter")];
 const languageButtons = [...document.querySelectorAll(".language-chip")];
 const levelButtons = [...document.querySelectorAll(".level-chip")];
+const librarySection = document.querySelector("#materials");
 let activeFilter = "all";
 let activeLanguage = "all";
 let activeLevel = "all";
+
+function updateFilterTheme() {
+  librarySection.dataset.filterLanguage = activeLanguage;
+}
 
 function renderResources() {
   const query = searchInput.value.trim().toLocaleLowerCase("ca");
@@ -45,9 +95,9 @@ function renderResources() {
 
   resourceGrid.innerHTML = filtered
     .map((resource) => {
-      const resourceUrl = resource.url || resource.file;
+      const resourceUrl = materialPageUrl(resource);
       const action = resourceUrl
-        ? `<a class="text-link resource-action" href="${resourceUrl}"${resource.file && !resource.url ? ' target="_blank" rel="noopener"' : ""}>Veure material <span>→</span></a>`
+        ? `<a class="text-link resource-action" href="${resourceUrl}">Veure material <span>→</span></a>`
         : `<button class="text-link resource-action" type="button" data-title="${resource.title}" data-status="${resource.status}">
             ${resource.status === "Disponible" ? "Obre la lliçó" : resource.status} <span>→</span>
           </button>`;
@@ -88,6 +138,7 @@ languageButtons.forEach((button) => {
   button.addEventListener("click", () => {
     activeLanguage = button.dataset.languageFilter;
     languageButtons.forEach((item) => item.classList.toggle("active", item === button));
+    updateFilterTheme();
     renderResources();
   });
 });
@@ -108,6 +159,7 @@ document.querySelectorAll(".language-filter").forEach((button) => {
     filterButtons.forEach((item) => item.classList.toggle("active", item.dataset.filter === "all"));
     languageButtons.forEach((item) => item.classList.toggle("active", item.dataset.languageFilter === activeLanguage));
     levelButtons.forEach((item) => item.classList.toggle("active", item.dataset.levelFilter === "all"));
+    updateFilterTheme();
     renderResources();
     document.querySelector("#materials").scrollIntoView({ behavior: "smooth" });
   });
@@ -129,6 +181,7 @@ async function loadResources() {
 }
 
 searchInput.addEventListener("input", renderResources);
+updateFilterTheme();
 loadResources();
 
 const menuToggle = document.querySelector(".menu-toggle");
