@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Material visual de llengües creat per Learn with Meri." />
+    <meta name="theme-color" content="#f1f8ef" />
+    <title>Material | Learn with Meri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="material.js" defer></script>
+  </head>
+  <body class="generic-material-body" data-language="English">
+    <a class="skip-link" href="#main">Anar al contingut</a>
+
+    <header class="site-header">
+      <div class="shell nav-wrap">
+        <a class="brand" href="index.html" aria-label="Learn with Meri, inici">
+          <span>Learn</span><small>with Meri</small>
+        </a>
+        <nav class="main-nav generic-material-nav" aria-label="Navegació principal">
+          <a id="nav-materials" href="index.html#materials">Tots els materials</a>
+          <a id="nav-home" class="nav-cta" href="index.html">Inici</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="material-page generic-material-page">
+      <section class="material-hero">
+        <div class="shell">
+          <a id="material-back" class="material-back" href="index.html#materials">← Tornar als materials</a>
+          <div class="material-layout">
+            <div class="material-copy">
+              <div class="material-tags" aria-label="Informació del material">
+                <span id="material-language" class="material-tag">English</span>
+                <span id="material-category" class="material-tag">Grammar</span>
+                <span id="material-level" class="material-tag">A2</span>
+              </div>
+              <h1 id="material-title">Material</h1>
+              <p id="material-description" class="material-intro"></p>
+
+              <div class="material-stats" aria-label="Resum del material">
+                <div><strong>PDF</strong><span id="stat-format">format digital</span></div>
+                <div><strong id="stat-level">A2</strong><span id="stat-level-label">nivell recomanat</span></div>
+                <div><strong>✓</strong><span id="stat-access">consulta o descàrrega</span></div>
+              </div>
+
+              <div class="material-actions">
+                <a id="view-pdf" class="button button-material" href="#" target="_blank" rel="noopener">Veure el material</a>
+                <a id="download-pdf" class="button button-ghost" href="#" download>Descarregar PDF</a>
+              </div>
+            </div>
+
+            <div class="material-preview generic-material-preview">
+              <img id="material-cover" alt="" hidden />
+              <div id="material-placeholder" class="material-placeholder" aria-hidden="true">
+                <span id="material-icon">PDF</span>
+                <div>
+                  <strong id="placeholder-title">Material</strong>
+                  <small>with Meri</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="generic-material-info">
+        <div class="shell generic-material-info-card">
+          <div>
+            <p id="info-eyebrow" class="eyebrow">COM EL VOLS UTILITZAR?</p>
+            <h2 id="info-title">Consulta’l en línia o descarrega’l</h2>
+          </div>
+          <p id="info-text">Pots obrir el material al navegador per treballar-lo a classe o guardar el PDF al teu dispositiu.</p>
+        </div>
+      </section>
+
+      <section class="material-cta">
+        <div class="shell material-cta-card generic-material-cta">
+          <div><h2 id="cta-title">Comencem?</h2><p id="cta-text">Obre el PDF i treballa al teu ritme.</p></div>
+          <a id="cta-open" class="button button-light" href="#" target="_blank" rel="noopener">Obrir el material</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="brand footer-brand"><span>Learn</span><small>with Meri</small></div>
+        <p id="footer-description">Material visual per aprendre amb claredat i confiança.</p>
+        <a id="footer-materials" href="index.html#materials">Més materials ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
