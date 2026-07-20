@@ -89,14 +89,16 @@ const resources = [
   },
   {
     title: "Pretérito indefinido",
-    description: "Usos, marcadores temporales, verbos regulares e irregulares y práctica oral.",
+    description: "Guía visual de 10 páginas con usos, marcadores temporales, verbos regulares e irregulares, práctica y soluciones.",
     category: "grammar",
     categoryLabel: "Gramática",
-    level: "A1–A2",
+    level: "A2",
     color: "blue",
     icon: "AYER",
-    status: "En preparació",
+    status: "Disponible",
     language: "Español",
+    keywords: "pasado indefinido pretérito ejercicios respuestas hablar escribir",
+    url: "materials/espanol/a2/preterito-indefinido/",
   },
   {
     title: "En el mercado",
@@ -124,23 +126,27 @@ function renderResources() {
   const filtered = resources.filter((resource) => {
     const matchesCategory = activeFilter === "all" || resource.category === activeFilter;
     const matchesLanguage = activeLanguage === "all" || resource.language === activeLanguage;
-    const searchable = `${resource.title} ${resource.description} ${resource.categoryLabel} ${resource.language}`.toLocaleLowerCase("ca");
+    const searchable = `${resource.title} ${resource.description} ${resource.categoryLabel} ${resource.language} ${resource.level} ${resource.keywords || ""}`.toLocaleLowerCase("ca");
     return matchesCategory && matchesLanguage && searchable.includes(query);
   });
 
   resourceGrid.innerHTML = filtered
-    .map(
-      (resource) => `
+    .map((resource) => {
+      const action = resource.url
+        ? `<a class="text-link resource-action" href="${resource.url}">Veure material <span>→</span></a>`
+        : `<button class="text-link resource-action" type="button" data-title="${resource.title}" data-status="${resource.status}">
+            ${resource.status === "Disponible" ? "Obre la lliçó" : resource.status} <span>→</span>
+          </button>`;
+
+      return `
       <article class="resource-card ${resource.color}">
         <div class="resource-icon" aria-hidden="true">${resource.icon}</div>
         <div class="resource-meta"><span>${resource.language} · ${resource.categoryLabel}</span><span>${resource.level}</span></div>
         <h3>${resource.title}</h3>
         <p>${resource.description}</p>
-        <button class="text-link resource-action" type="button" data-title="${resource.title}" data-status="${resource.status}">
-          ${resource.status === "Disponible" ? "Obre la lliçó" : resource.status} <span>→</span>
-        </button>
-      </article>`
-    )
+        ${action}
+      </article>`;
+    })
     .join("");
 
   noResults.hidden = filtered.length > 0;

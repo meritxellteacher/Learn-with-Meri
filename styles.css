@@ -296,3 +296,51 @@ img { max-width: 100%; }
   .page-tab { right: -1%; }
   .section-heading { margin-bottom: 36px; }
 }
+
+/* Material pages */
+.material-page { min-height: 100vh; background: linear-gradient(145deg, #f5f9fc 0%, #ffffff 48%, #f3f7fa 100%); }
+.material-hero { padding: 72px 0 96px; }
+.material-back { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 34px; color: #416e80; font-size: 0.86rem; font-weight: 800; }
+.material-layout { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(360px, 0.72fr); align-items: center; gap: 88px; }
+.material-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.material-tag { padding: 7px 11px; border: 1px solid #c9dce5; border-radius: 999px; background: #edf4f8; color: #416e80; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.material-copy h1 { margin: 0; font: 800 clamp(2.8rem, 5vw, 5rem)/1.02 "Nunito", sans-serif; letter-spacing: -0.05em; }
+.material-intro { max-width: 660px; margin: 24px 0 0; color: var(--muted); font-size: 1.08rem; }
+.material-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 32px 0; }
+.material-stats div { padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,0.78); }
+.material-stats strong { display: block; color: #416e80; font: 800 1.25rem "Nunito", sans-serif; }
+.material-stats span { color: var(--muted); font-size: 0.75rem; }
+.material-actions { display: flex; flex-wrap: wrap; gap: 11px; }
+.button-blue { background: #315f73; color: white; box-shadow: 0 12px 28px rgba(49,95,115,0.2); }
+.button-blue:hover { background: #244f62; }
+.material-preview { position: relative; padding: 24px; }
+.material-preview::before { content: ""; position: absolute; inset: 2% -3% -2% 8%; border-radius: 28px; background: #dceaf1; transform: rotate(3deg); }
+.material-preview img { position: relative; z-index: 1; display: block; width: 100%; border: 1px solid rgba(49,95,115,0.15); border-radius: 10px; background: white; box-shadow: 0 30px 70px rgba(49,70,82,0.18); transform: rotate(-1.5deg); }
+.material-content { padding: 90px 0; background: white; }
+.material-content-grid { display: grid; grid-template-columns: 0.72fr 1.28fr; gap: 80px; }
+.material-content h2 { margin: 0; font: 800 clamp(2rem, 4vw, 3.35rem)/1.05 "Nunito", sans-serif; letter-spacing: -0.04em; }
+.material-content-lead { margin-top: 18px; color: var(--muted); }
+.material-chapters { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.material-chapter { display: flex; gap: 15px; padding: 19px; border: 1px solid var(--line); border-radius: 16px; background: #fcfdfd; }
+.material-chapter > span { display: grid; width: 34px; height: 34px; place-items: center; flex: 0 0 auto; border-radius: 50%; background: var(--blue-100); color: #416e80; font: 800 0.72rem "Nunito", sans-serif; }
+.material-chapter h3 { margin: 1px 0 4px; font: 800 1rem "Nunito", sans-serif; }
+.material-chapter p { margin: 0; color: var(--muted); font-size: 0.8rem; }
+.material-cta { padding: 0 0 100px; background: white; }
+.material-cta-card { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 42px 48px; border-radius: var(--radius-lg); background: #315f73; color: white; }
+.material-cta-card h2 { margin: 0; font: 800 clamp(1.8rem, 3vw, 2.7rem) "Nunito", sans-serif; }
+.material-cta-card p { margin: 7px 0 0; color: #d9e8ee; }
+
+@media (max-width: 900px) {
+  .material-layout, .material-content-grid { grid-template-columns: 1fr; gap: 50px; }
+  .material-copy { text-align: center; }
+  .material-tags, .material-actions { justify-content: center; }
+  .material-intro { margin-inline: auto; }
+  .material-preview { width: min(560px, 88%); margin-inline: auto; }
+}
+
+@media (max-width: 620px) {
+  .material-hero { padding: 45px 0 72px; }
+  .material-stats { grid-template-columns: 1fr; }
+  .material-chapters { grid-template-columns: 1fr; }
+  .material-cta-card { align-items: flex-start; flex-direction: column; padding: 34px 28px; }
+}
