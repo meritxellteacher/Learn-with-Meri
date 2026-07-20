@@ -23,11 +23,11 @@ content:
     list: true
     fields:
       - name: title
-        label: TÃ­tol
+        label: Títol
         type: string
         required: true
       - name: description
-        label: DescripciÃ³ breu
+        label: Descripció breu
         type: text
         required: true
       - name: language
@@ -35,7 +35,7 @@ content:
         type: select
         required: true
         options:
-          values: [English, CatalÃ , EspaÃ±ol]
+          values: [English, Català, Español]
       - name: category
         label: Categoria
         type: select
@@ -43,7 +43,7 @@ content:
         options:
           values:
             - name: grammar
-              label: GramÃ tica
+              label: Gramàtica
             - name: vocabulary
               label: Vocabulari
             - name: speaking
@@ -55,13 +55,13 @@ content:
         type: select
         required: true
         options:
-          values: [A1, A2, B1, B2, A1â€“A2, B1â€“B2, C1]
+          values: [A1, A2, B1, B2, A1–A2, B1–B2, C1]
       - name: status
         label: Estat
         type: select
         default: Disponible
         options:
-          values: [Disponible, Properament, En preparaciÃ³]
+          values: [Disponible, Properament, En preparació]
       - name: file
         label: PDF del material
         type: file
@@ -84,9 +84,9 @@ content:
         label: Paraules per al cercador
         type: string
       - name: url
-        label: EnllaÃ§ a una pÃ gina prÃ²pia (opcional)
+        label: Enllaç a una pàgina pròpia (opcional)
         type: string
-        description: Deixa-ho buit quan el botÃ³ hagi d'obrir directament el PDF.
+        description: Deixa-ho buit quan el botó hagi d'obrir directament el PDF.
       - name: published
         label: Mostrar a la web
         type: boolean
