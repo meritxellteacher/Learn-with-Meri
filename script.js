@@ -1,117 +1,27 @@
-const resources = [
-  {
-    title: "Simple Past",
-    description: "Accions acabades, verbs regulars i irregulars i preguntes amb did.",
-    category: "grammar",
-    categoryLabel: "Grammar",
-    level: "A1–A2",
-    color: "green",
-    icon: "PAST",
-    status: "Disponible",
-    language: "English",
-  },
-  {
-    title: "Daily Routines",
-    description: "Vocabulari visual i frases pràctiques per explicar el teu dia.",
-    category: "vocabulary",
-    categoryLabel: "Vocabulary",
-    level: "A1–A2",
-    color: "peach",
-    icon: "DAY",
-    status: "Properament",
-    language: "English",
-  },
-  {
-    title: "Can, Have Got & There Is",
-    description: "Preguntes guiades per practicar estructures essencials parlant.",
-    category: "speaking",
-    categoryLabel: "Speaking",
-    level: "A1–A2",
-    color: "blue",
-    icon: "TALK",
-    status: "Properament",
-    language: "English",
-  },
-  {
-    title: "Present Tenses Review",
-    description: "Present simple i continuous: forma, ús i contrastos clau.",
-    category: "grammar",
-    categoryLabel: "Grammar",
-    level: "B1–B2",
-    color: "lilac",
-    icon: "NOW",
-    status: "En preparació",
-    language: "English",
-  },
-  {
-    title: "Word Formation",
-    description: "Famílies de paraules, prefixos i sufixos per ampliar vocabulari.",
-    category: "vocabulary",
-    categoryLabel: "Vocabulary",
-    level: "B1–B2",
-    color: "peach",
-    icon: "WORD",
-    status: "En preparació",
-    language: "English",
-  },
-  {
-    title: "Reading & Use of English",
-    description: "Estratègies visuals i pràctica enfocada a Cambridge.",
-    category: "skills",
-    categoryLabel: "Reading",
-    level: "B1–B2",
-    color: "blue",
-    icon: "READ",
-    status: "Properament",
-    language: "English",
-  },
-  {
-    title: "Anar a comprar",
-    description: "Vocabulari i frases útils per comprar al mercat, al supermercat i a les botigues.",
-    category: "speaking",
-    categoryLabel: "Conversa",
-    level: "A1–A2",
-    color: "lilac",
-    icon: "PARLA",
-    status: "En preparació",
-    language: "Català",
-  },
-  {
-    title: "Perífrasis verbals",
-    description: "Estructures habituals per expressar obligació, inici, durada i final d'una acció.",
-    category: "grammar",
-    categoryLabel: "Gramàtica",
-    level: "B1–B2",
-    color: "lilac",
-    icon: "VERB",
-    status: "Properament",
-    language: "Català",
-  },
-  {
-    title: "Pretérito indefinido",
-    description: "Guía visual de 10 páginas con usos, marcadores temporales, verbos regulares e irregulares, práctica y soluciones.",
-    category: "grammar",
-    categoryLabel: "Gramática",
-    level: "A2",
-    color: "blue",
-    icon: "AYER",
-    status: "Disponible",
-    language: "Español",
-    keywords: "pasado indefinido pretérito ejercicios respuestas hablar escribir",
-    url: "materials/espanol/a2/preterito-indefinido/",
-  },
-  {
-    title: "En el mercado",
-    description: "Vocabulario práctico, preguntas y respuestas para comprar con confianza.",
-    category: "vocabulary",
-    categoryLabel: "Vocabulario",
-    level: "A1–A2",
-    color: "blue",
-    icon: "MERC",
-    status: "Properament",
-    language: "Español",
-  },
-];
+let resources = [];
+
+const languageColors = {
+  English: "green",
+  Català: "lilac",
+  Español: "blue",
+};
+
+const categoryLabels = {
+  English: { grammar: "Grammar", vocabulary: "Vocabulary", speaking: "Speaking", skills: "Skills" },
+  Català: { grammar: "Gramàtica", vocabulary: "Vocabulari", speaking: "Conversa", skills: "Habilitats" },
+  Español: { grammar: "Gramática", vocabulary: "Vocabulario", speaking: "Conversación", skills: "Destrezas" },
+};
+
+function prepareResource(resource) {
+  const fallbackIcon = resource.title.replace(/[^A-Za-zÀ-ÿ0-9]/g, "").slice(0, 5).toUpperCase();
+  return {
+    ...resource,
+    color: languageColors[resource.language] || "green",
+    categoryLabel: categoryLabels[resource.language]?.[resource.category] || resource.category,
+    icon: resource.icon || fallbackIcon || "MATERIAL",
+    status: resource.status || (resource.file ? "Disponible" : "Properament"),
+  };
+}
 
 const resourceGrid = document.querySelector("#resource-grid");
 const noResults = document.querySelector("#no-results");
@@ -135,8 +45,9 @@ function renderResources() {
 
   resourceGrid.innerHTML = filtered
     .map((resource) => {
-      const action = resource.url
-        ? `<a class="text-link resource-action" href="${resource.url}">Veure material <span>→</span></a>`
+      const resourceUrl = resource.url || resource.file;
+      const action = resourceUrl
+        ? `<a class="text-link resource-action" href="${resourceUrl}"${resource.file && !resource.url ? ' target="_blank" rel="noopener"' : ""}>Veure material <span>→</span></a>`
         : `<button class="text-link resource-action" type="button" data-title="${resource.title}" data-status="${resource.status}">
             ${resource.status === "Disponible" ? "Obre la lliçó" : resource.status} <span>→</span>
           </button>`;
@@ -154,7 +65,7 @@ function renderResources() {
 
   noResults.hidden = filtered.length > 0;
 
-  document.querySelectorAll(".resource-action").forEach((button) => {
+  document.querySelectorAll("button.resource-action").forEach((button) => {
     button.addEventListener("click", () => {
       if (button.dataset.status === "Disponible") {
         document.querySelector("#featured").scrollIntoView({ behavior: "smooth" });
@@ -202,8 +113,23 @@ document.querySelectorAll(".language-filter").forEach((button) => {
   });
 });
 
+async function loadResources() {
+  try {
+    const response = await fetch("content/materials.json", { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (!Array.isArray(data)) throw new Error("El fitxer de materials no és una llista.");
+    resources = data.filter((resource) => resource.published !== false).map(prepareResource);
+    renderResources();
+  } catch (error) {
+    noResults.hidden = false;
+    noResults.textContent = "No s'han pogut carregar els materials. Torna-ho a provar d'aquí a uns minuts.";
+    console.error("Error carregant els materials:", error);
+  }
+}
+
 searchInput.addEventListener("input", renderResources);
-renderResources();
+loadResources();
 
 const menuToggle = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector(".main-nav");
