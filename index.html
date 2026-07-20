@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Materials visuals i pràctics per aprendre anglès, català i castellà amb Meri."
+    />
+    <meta name="theme-color" content="#f7fbf6" />
+    <title>Learn with Meri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Salta al contingut</a>
+
+    <header class="site-header">
+      <div class="shell nav-wrap">
+        <a class="brand" href="#top" aria-label="Learn with Meri, inici">
+          <span>Learn</span>
+          <small>with Meri</small>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+          <span class="sr-only">Obre el menú</span>
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav id="main-nav" class="main-nav" aria-label="Navegació principal">
+          <a href="#materials">Materials</a>
+          <a href="#languages">Idiomes</a>
+          <a href="#method">Com funciona</a>
+          <a class="nav-cta" href="#featured">Comença aquí</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="top" class="hero">
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Languages made visual, clear & useful</p>
+            <h1>Aprèn idiomes.<br /><span>Comunica't de veritat.</span></h1>
+            <p class="hero-lead">
+              Anglès, català i castellà amb explicacions visuals, pràctica guiada i materials
+              pensats perquè avancis amb confiança i sense embolics.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#materials">Explora els materials</a>
+              <a class="button button-ghost" href="#featured">Prova una lliçó</a>
+            </div>
+            <ul class="hero-proof" aria-label="Característiques dels materials">
+              <li><span>EN</span> English</li>
+              <li><span>CA</span> Català</li>
+              <li><span>ES</span> Español</li>
+            </ul>
+          </div>
+
+          <div class="hero-visual" aria-label="Mostra de materials educatius">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="paper-stack">
+              <article class="lesson-sheet sheet-back" aria-hidden="true">
+                <div class="sheet-line short"></div>
+                <div class="sheet-line"></div>
+                <div class="sheet-box"></div>
+              </article>
+              <article class="lesson-sheet sheet-front">
+                <span class="sheet-label">Grammar map</span>
+                <h2>Simple Past</h2>
+                <p>Finished actions in the past</p>
+                <div class="formula">subject + past verb</div>
+                <div class="example-row">
+                  <span class="mini-illustration">☀</span>
+                  <p><strong>We visited</strong><br />the market yesterday.</p>
+                </div>
+                <div class="sheet-footer">with Meri</div>
+              </article>
+            </div>
+            <div class="floating-card card-speaking"><span>💬</span> Speaking</div>
+            <div class="floating-card card-vocab"><span>ABC</span> Vocabulary</div>
+            <div class="spark spark-one">✦</div>
+            <div class="spark spark-two">✦</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ticker" aria-label="Àrees d'aprenentatge">
+        <div class="ticker-track">
+          <span>English</span><i>•</i><span>Català</span><i>•</i><span>Español</span><i>•</i>
+          <span>Grammar</span><i>•</i><span>Vocabulary</span><i>•</i><span>Speaking</span><i>•</i>
+          <span aria-hidden="true">English</span><i aria-hidden="true">•</i>
+          <span aria-hidden="true">Català</span><i aria-hidden="true">•</i>
+          <span aria-hidden="true">Español</span>
+        </div>
+      </section>
+
+      <section id="languages" class="section levels-section">
+        <div class="shell">
+          <div class="section-heading centered">
+            <p class="eyebrow">Tria el teu idioma</p>
+            <h2>Tres idiomes, un mateix mètode</h2>
+            <p>Materials visuals i útils adaptats a la manera real d'utilitzar cada llengua.</p>
+          </div>
+
+          <div class="level-grid language-grid">
+            <article class="level-card level-a">
+              <div class="level-topline"><span>Learn English</span><span>01</span></div>
+              <div class="level-orb language-orb">EN</div>
+              <h3>English</h3>
+              <p>Construeix una base clara, amplia recursos i prepara't per comunicar-te amb confiança.</p>
+              <ul>
+                <li>Grammar & vocabulary</li>
+                <li>Speaking per a la vida real</li>
+                <li>Preparació Cambridge</li>
+              </ul>
+              <button class="text-link language-filter" type="button" data-language="English">
+                Veure materials <span>→</span>
+              </button>
+            </article>
+
+            <article class="level-card level-b">
+              <div class="level-topline"><span>Aprèn català</span><span>02</span></div>
+              <div class="level-orb language-orb">CA</div>
+              <h3>Català</h3>
+              <p>Descobreix estructures i vocabulari natural per parlar amb més fluïdesa i precisió.</p>
+              <ul>
+                <li>Gramàtica ben estructurada</li>
+                <li>Vocabulari quotidià</li>
+                <li>Conversa guiada</li>
+              </ul>
+              <button class="text-link language-filter" type="button" data-language="Català">
+                Veure materials <span>→</span>
+              </button>
+            </article>
+
+            <article class="level-card level-c">
+              <div class="level-topline"><span>Aprende español</span><span>03</span></div>
+              <div class="level-orb language-orb">ES</div>
+              <h3>Español</h3>
+              <p>Aprende a desenvolverte en situaciones cotidianas con explicaciones claras y práctica oral.</p>
+              <ul>
+                <li>Gramática esencial</li>
+                <li>Vocabulario práctico</li>
+                <li>Situaciones reales</li>
+              </ul>
+              <button class="text-link language-filter" type="button" data-language="Español">
+                Veure materials <span>→</span>
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="materials" class="section library-section">
+        <div class="shell">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="eyebrow">La teva biblioteca</p>
+              <h2>Aprèn una cosa cada vegada</h2>
+            </div>
+            <p>Filtra per àrea o cerca directament el tema que necessites.</p>
+          </div>
+
+          <div class="library-toolbar">
+            <div class="filter-groups">
+              <div class="filters language-filters" role="group" aria-label="Filtra per idioma">
+                <button class="language-chip active" type="button" data-language-filter="all">Tots els idiomes</button>
+                <button class="language-chip" type="button" data-language-filter="English">English</button>
+                <button class="language-chip" type="button" data-language-filter="Català">Català</button>
+                <button class="language-chip" type="button" data-language-filter="Español">Español</button>
+              </div>
+              <div class="filters" role="group" aria-label="Filtra per tipus de material">
+                <button class="filter active" type="button" data-filter="all">Tot</button>
+                <button class="filter" type="button" data-filter="grammar">Grammar</button>
+                <button class="filter" type="button" data-filter="vocabulary">Vocabulary</button>
+                <button class="filter" type="button" data-filter="speaking">Speaking</button>
+                <button class="filter" type="button" data-filter="skills">Skills</button>
+              </div>
+            </div>
+            <label class="search-box">
+              <span class="sr-only">Cerca materials</span>
+              <span aria-hidden="true">⌕</span>
+              <input id="resource-search" type="search" placeholder="Cerca un tema..." autocomplete="off" />
+            </label>
+          </div>
+
+          <div id="resource-grid" class="resource-grid" aria-live="polite"></div>
+          <p id="no-results" class="no-results" hidden>No hem trobat cap material amb aquests filtres.</p>
+        </div>
+      </section>
+
+      <section id="featured" class="section featured-section">
+        <div class="shell featured-grid">
+          <div class="featured-preview">
+            <div class="preview-page">
+              <div class="preview-heading">
+                <span>01</span>
+                <div><small>Grammar essentials</small><h3>The Simple Past</h3></div>
+              </div>
+              <div class="preview-rule">
+                <strong>When do we use it?</strong>
+                <p>For finished actions at a specific time in the past.</p>
+              </div>
+              <div class="preview-timeline">
+                <span class="past-dot"></span><span class="line"></span><span class="now-dot"></span>
+                <small class="past-label">yesterday</small><small class="now-label">now</small>
+              </div>
+              <div class="preview-examples">
+                <p><span>✓</span> I <strong>worked</strong> yesterday.</p>
+                <p><span>✓</span> She <strong>went</strong> to Girona.</p>
+              </div>
+              <div class="preview-brand">with Meri</div>
+            </div>
+            <span class="page-tab tab-one">Explain</span>
+            <span class="page-tab tab-two">Practise</span>
+            <span class="page-tab tab-three">Check</span>
+          </div>
+
+          <div class="featured-copy">
+            <p class="eyebrow">Material destacat</p>
+            <h2>Simple Past Lesson Kit <small>English</small></h2>
+            <p class="featured-intro">
+              Una primera lliçó completa per entendre, practicar i començar a parlar en passat.
+            </p>
+            <div class="kit-list">
+              <div><span>01</span><p><strong>Explicació visual</strong><small>Ús, estructura i exemples clars.</small></p></div>
+              <div><span>02</span><p><strong>Pràctica progressiva</strong><small>De completar frases a crear-ne de pròpies.</small></p></div>
+              <div><span>03</span><p><strong>Speaking prompts</strong><small>Preguntes per utilitzar-ho en conversa.</small></p></div>
+              <div><span>04</span><p><strong>Respostes</strong><small>Correcció autònoma pas a pas.</small></p></div>
+            </div>
+            <button id="open-quiz" class="button button-primary" type="button">Prova el mini quiz</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="method" class="section method-section">
+        <div class="shell">
+          <div class="section-heading centered">
+            <p class="eyebrow">El mètode with Meri</p>
+            <h2>De veure-ho a saber-ho utilitzar</h2>
+          </div>
+          <div class="method-grid">
+            <article><span>01</span><div class="method-icon">◫</div><h3>Entén</h3><p>Una explicació visual que ordena les idees essencials.</p></article>
+            <article><span>02</span><div class="method-icon">✎</div><h3>Practica</h3><p>Exercicis variats que avancen de manera progressiva.</p></article>
+            <article><span>03</span><div class="method-icon">◌</div><h3>Utilitza</h3><p>Preguntes i situacions perquè l'idioma surti de la pàgina.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing-section">
+        <div class="shell closing-card">
+          <div>
+            <p class="eyebrow">A poc a poc. Però endavant.</p>
+            <h2>Què vols aprendre avui?</h2>
+          </div>
+          <a class="button button-light" href="#materials">Ves als materials</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="brand footer-brand"><span>Learn</span><small>with Meri</small></div>
+        <p>English · Català · Español — materials visuals per aprendre amb claredat i confiança.</p>
+        <a href="#top">Torna a dalt ↑</a>
+      </div>
+    </footer>
+
+    <dialog id="quiz-dialog" class="quiz-dialog">
+      <div class="quiz-head">
+        <div><small>Mini practice</small><h2>Simple Past</h2></div>
+        <button id="close-quiz" type="button" aria-label="Tanca el qüestionari">×</button>
+      </div>
+      <form id="quiz-form">
+        <fieldset>
+          <legend>1. Yesterday, I ___ to the market.</legend>
+          <label><input type="radio" name="q1" value="go" /> go</label>
+          <label><input type="radio" name="q1" value="went" /> went</label>
+          <label><input type="radio" name="q1" value="goed" /> goed</label>
+        </fieldset>
+        <fieldset>
+          <legend>2. She ___ TV last night.</legend>
+          <label><input type="radio" name="q2" value="watch" /> watch</label>
+          <label><input type="radio" name="q2" value="watched" /> watched</label>
+          <label><input type="radio" name="q2" value="watches" /> watches</label>
+        </fieldset>
+        <fieldset>
+          <legend>3. ___ you visit your family?</legend>
+          <label><input type="radio" name="q3" value="do" /> Do</label>
+          <label><input type="radio" name="q3" value="did" /> Did</label>
+          <label><input type="radio" name="q3" value="were" /> Were</label>
+        </fieldset>
+        <button class="button button-primary" type="submit">Comprova</button>
+        <p id="quiz-result" class="quiz-result" aria-live="polite"></p>
+      </form>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
