@@ -1,0 +1,101 @@
+media:
+  - name: images
+    label: Imatges i portades
+    input: media/images
+    output: media/images
+    extensions: [jpg, jpeg, png, webp]
+    categories: [image]
+    rename: safe
+  - name: documents
+    label: PDFs i documents
+    input: media/documents
+    output: media/documents
+    extensions: [pdf]
+    categories: [document]
+    rename: safe
+
+content:
+  - name: materials
+    label: Materials de la web
+    type: file
+    path: content/materials.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: TÃ­tol
+        type: string
+        required: true
+      - name: description
+        label: DescripciÃ³ breu
+        type: text
+        required: true
+      - name: language
+        label: Idioma
+        type: select
+        required: true
+        options:
+          values: [English, CatalÃ , EspaÃ±ol]
+      - name: category
+        label: Categoria
+        type: select
+        required: true
+        options:
+          values:
+            - name: grammar
+              label: GramÃ tica
+            - name: vocabulary
+              label: Vocabulari
+            - name: speaking
+              label: Speaking / conversa
+            - name: skills
+              label: Altres habilitats
+      - name: level
+        label: Nivell
+        type: select
+        required: true
+        options:
+          values: [A1, A2, B1, B2, A1â€“A2, B1â€“B2, C1]
+      - name: status
+        label: Estat
+        type: select
+        default: Disponible
+        options:
+          values: [Disponible, Properament, En preparaciÃ³]
+      - name: file
+        label: PDF del material
+        type: file
+        options:
+          media: documents
+          extensions: [pdf]
+          rename: safe
+      - name: cover
+        label: Imatge de portada opcional
+        type: image
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          rename: safe
+      - name: icon
+        label: Paraula curta de la targeta
+        type: string
+        description: Per exemple PAST, AYER, MERC o PARLA.
+      - name: keywords
+        label: Paraules per al cercador
+        type: string
+      - name: url
+        label: EnllaÃ§ a una pÃ gina prÃ²pia (opcional)
+        type: string
+        description: Deixa-ho buit quan el botÃ³ hagi d'obrir directament el PDF.
+      - name: published
+        label: Mostrar a la web
+        type: boolean
+        default: true
+
+settings:
+  commit:
+    identity: user
+    templates:
+      create: "Afegeix {filename} des de Pages CMS"
+      update: "Actualitza {filename} des de Pages CMS"
+      delete: "Elimina {filename} des de Pages CMS"
