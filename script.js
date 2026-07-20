@@ -118,16 +118,19 @@ const noResults = document.querySelector("#no-results");
 const searchInput = document.querySelector("#resource-search");
 const filterButtons = [...document.querySelectorAll(".filter")];
 const languageButtons = [...document.querySelectorAll(".language-chip")];
+const levelButtons = [...document.querySelectorAll(".level-chip")];
 let activeFilter = "all";
 let activeLanguage = "all";
+let activeLevel = "all";
 
 function renderResources() {
   const query = searchInput.value.trim().toLocaleLowerCase("ca");
   const filtered = resources.filter((resource) => {
     const matchesCategory = activeFilter === "all" || resource.category === activeFilter;
     const matchesLanguage = activeLanguage === "all" || resource.language === activeLanguage;
+    const matchesLevel = activeLevel === "all" || resource.level.includes(activeLevel);
     const searchable = `${resource.title} ${resource.description} ${resource.categoryLabel} ${resource.language} ${resource.level} ${resource.keywords || ""}`.toLocaleLowerCase("ca");
-    return matchesCategory && matchesLanguage && searchable.includes(query);
+    return matchesCategory && matchesLanguage && matchesLevel && searchable.includes(query);
   });
 
   resourceGrid.innerHTML = filtered
@@ -178,12 +181,22 @@ languageButtons.forEach((button) => {
   });
 });
 
+levelButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    activeLevel = button.dataset.levelFilter;
+    levelButtons.forEach((item) => item.classList.toggle("active", item === button));
+    renderResources();
+  });
+});
+
 document.querySelectorAll(".language-filter").forEach((button) => {
   button.addEventListener("click", () => {
     activeLanguage = button.dataset.language;
     activeFilter = "all";
+    activeLevel = "all";
     filterButtons.forEach((item) => item.classList.toggle("active", item.dataset.filter === "all"));
     languageButtons.forEach((item) => item.classList.toggle("active", item.dataset.languageFilter === activeLanguage));
+    levelButtons.forEach((item) => item.classList.toggle("active", item.dataset.levelFilter === "all"));
     renderResources();
     document.querySelector("#materials").scrollIntoView({ behavior: "smooth" });
   });
